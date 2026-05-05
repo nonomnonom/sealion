@@ -1,5 +1,11 @@
 # Sealion
 
+[![npm version](https://img.shields.io/npm/v/sealion-sim.svg?style=flat-square&color=cb3837)](https://www.npmjs.com/package/sealion-sim)
+[![npm downloads](https://img.shields.io/npm/dm/sealion-sim.svg?style=flat-square&color=cb3837)](https://www.npmjs.com/package/sealion-sim)
+[![CI](https://img.shields.io/github/actions/workflow/status/nonomnonom/sealion/ci.yml?branch=main&style=flat-square&label=CI)](https://github.com/nonomnonom/sealion/actions/workflows/ci.yml)
+[![License](https://img.shields.io/npm/l/sealion-sim.svg?style=flat-square&color=informational)](./LICENSE)
+[![Bun](https://img.shields.io/badge/runtime-Bun%20%E2%89%A5%201.1-black.svg?style=flat-square)](https://bun.com/)
+
 **Multi-agent market simulation framework for traders.** Built on [Mastra](https://mastra.ai/) so you can pick **any LLM provider** Mastra supports (OpenAI, Anthropic, Google, DeepSeek, Groq, Mistral, xAI, OpenRouter, Ollama, etc.) and gain Memory / Workflows / Scorers / Observability for free. Persistence via [`bun:sqlite`](https://bun.com/docs/api/sqlite).
 
 > ⚠️ **Bun-only.** Sealion uses `bun:sqlite` directly. Node.js is not supported — install [Bun](https://bun.com/) ≥ 1.1.
