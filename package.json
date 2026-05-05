@@ -1,6 +1,6 @@
 {
   "name": "sealion-sim",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Multi-agent market simulation framework on Mastra + bun:sqlite. Pluggable price simulators, matching engine, and LLM-driven traders.",
   "keywords": [
     "agent-based-modeling",
