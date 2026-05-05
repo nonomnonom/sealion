@@ -8,5 +8,14 @@
   "bracketSpacing": true,
   "arrowParens": "always",
   "endOfLine": "lf",
-  "ignorePatterns": ["node_modules", "dist", "out", "data", ".claude", ".agents", "*.db"]
+  "ignorePatterns": [
+    "node_modules",
+    "dist",
+    "out",
+    "data",
+    ".claude",
+    ".agents",
+    "*.db",
+    "CHANGELOG.md"
+  ]
 }
