@@ -2,6 +2,14 @@
 
 **Multi-agent market simulation framework for traders.** Built on [Mastra](https://mastra.ai/) so you can pick **any LLM provider** Mastra supports (OpenAI, Anthropic, Google, DeepSeek, Groq, Mistral, xAI, OpenRouter, Ollama, etc.) and gain Memory / Workflows / Scorers / Observability for free. Persistence via [`bun:sqlite`](https://bun.com/docs/api/sqlite).
 
+> ⚠️ **Bun-only.** Sealion uses `bun:sqlite` directly. Node.js is not supported — install [Bun](https://bun.com/) ≥ 1.1.
+
+## Install
+
+```bash
+bun add @nonomnonom/sealion
+```
+
 ```ts
 import {
   ActionType,
@@ -11,7 +19,7 @@ import {
   TraderProfile,
   make,
   spotPreset,
-} from "sealion";
+} from "@nonomnonom/sealion";
 
 const traders = new TraderGraph();
 traders.addAgent(
@@ -147,7 +155,7 @@ new TradingAgent({
 import { Mastra } from "@mastra/core";
 import { LibSQLStore } from "@mastra/libsql";
 import { Observability } from "@mastra/observability";
-import { collectMastraAgents, sealionObservabilityConfig } from "sealion";
+import { collectMastraAgents, sealionObservabilityConfig } from "@nonomnonom/sealion";
 
 export const mastra = new Mastra({
   agents: collectMastraAgents(traders),
@@ -161,7 +169,7 @@ Studio menampilkan setiap trade decision, tool call, token usage, dan trace.
 ### Scorers — built-in trading evals
 
 ```ts
-import { createPnLScorer, createPersonaConsistencyScorer } from "sealion";
+import { createPnLScorer, createPersonaConsistencyScorer } from "@nonomnonom/sealion";
 
 const pnl = createPnLScorer({ baselineEquity: 10_000, targetEquity: 15_000 });
 const result = await pnl.run({
@@ -231,7 +239,7 @@ customMarket({ symbol, baseAsset, quoteAsset, tickSize, lotSize, takerFeeBps, ma
 ## High-level harness — `Scenario`
 
 ```ts
-import { Scenario, GBM, Scripted, spotPreset, makeMarketMaker } from "sealion";
+import { Scenario, GBM, Scripted, spotPreset, makeMarketMaker } from "@nonomnonom/sealion";
 
 const traders = new TraderGraph();
 traders.addAgent(makeMarketMaker({ agentId: 0, cash: 1_000_000, position: 100 }));

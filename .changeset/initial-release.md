@@ -1,5 +1,5 @@
 ---
-"sealion": minor
+"@nonomnonom/sealion": minor
 ---
 
 Initial public release.
