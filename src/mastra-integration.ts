@@ -58,7 +58,7 @@ export function registerWithMastra(
  * ```ts
  * import { Mastra } from "@mastra/core";
  * import { Observability, DefaultExporter, SensitiveDataFilter } from "@mastra/observability";
- * import { collectMastraAgents, sealionObservabilityConfig } from "@nonomnonom/sealion";
+ * import { collectMastraAgents, sealionObservabilityConfig } from "sealion-sim";
  *
  * const obs = new Observability(sealionObservabilityConfig({
  *   exporters: [new DefaultExporter()],

@@ -7,7 +7,7 @@
 ## Install
 
 ```bash
-bun add @nonomnonom/sealion
+bun add sealion-sim
 ```
 
 ```ts
@@ -19,7 +19,7 @@ import {
   TraderProfile,
   make,
   spotPreset,
-} from "@nonomnonom/sealion";
+} from "sealion-sim";
 
 const traders = new TraderGraph();
 traders.addAgent(
@@ -155,7 +155,7 @@ new TradingAgent({
 import { Mastra } from "@mastra/core";
 import { LibSQLStore } from "@mastra/libsql";
 import { Observability } from "@mastra/observability";
-import { collectMastraAgents, sealionObservabilityConfig } from "@nonomnonom/sealion";
+import { collectMastraAgents, sealionObservabilityConfig } from "sealion-sim";
 
 export const mastra = new Mastra({
   agents: collectMastraAgents(traders),
@@ -169,7 +169,7 @@ Studio menampilkan setiap trade decision, tool call, token usage, dan trace.
 ### Scorers — built-in trading evals
 
 ```ts
-import { createPnLScorer, createPersonaConsistencyScorer } from "@nonomnonom/sealion";
+import { createPnLScorer, createPersonaConsistencyScorer } from "sealion-sim";
 
 const pnl = createPnLScorer({ baselineEquity: 10_000, targetEquity: 15_000 });
 const result = await pnl.run({
@@ -239,7 +239,7 @@ customMarket({ symbol, baseAsset, quoteAsset, tickSize, lotSize, takerFeeBps, ma
 ## High-level harness — `Scenario`
 
 ```ts
-import { Scenario, GBM, Scripted, spotPreset, makeMarketMaker } from "@nonomnonom/sealion";
+import { Scenario, GBM, Scripted, spotPreset, makeMarketMaker } from "sealion-sim";
 
 const traders = new TraderGraph();
 traders.addAgent(makeMarketMaker({ agentId: 0, cash: 1_000_000, position: 100 }));
