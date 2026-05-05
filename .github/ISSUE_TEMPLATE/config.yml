@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discussions
+    url: https://github.com/nonomnonom/sealion/discussions
+    about: Questions, ideas, and design discussions go here.

@@ -1,0 +1,63 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write # for npm provenance
+
+concurrency:
+  group: release-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Version PR or publish
+    runs-on: ubuntu-latest
+    # Skip the bot's own commits to avoid loops.
+    if: ${{ github.repository_owner != '' && !contains(github.event.head_commit.message, '[skip-release]') }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Setup Node (for npm CLI / changesets)
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Verify checks pass before release
+        run: |
+          mkdir -p data
+          bun run check
+          bun test
+
+      - name: Create release PR or publish
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          # When a release PR exists, this command runs after merge to publish.
+          # `bun run release` runs the full check pipeline before `changeset publish`.
+          publish: bun run release
+          # PR title shown in the open release PR.
+          title: "chore: release packages"
+          # Commit message used by the bot.
+          commit: "chore: version packages [skip-release]"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Only required when actually publishing to npm — leave empty to
+          # restrict the workflow to GitHub releases only.
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

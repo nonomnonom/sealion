@@ -1,0 +1,76 @@
+{
+  "name": "sealion",
+  "version": "0.1.0",
+  "description": "Multi-agent market simulation framework on Mastra + bun:sqlite. Pluggable price simulators, matching engine, and LLM-driven traders.",
+  "keywords": [
+    "agent-based-modeling",
+    "backtest",
+    "bun",
+    "llm",
+    "market-microstructure",
+    "mastra",
+    "matching-engine",
+    "multi-agent",
+    "simulation",
+    "trading",
+    "typescript"
+  ],
+  "homepage": "https://github.com/nonomnonom/sealion#readme",
+  "bugs": {
+    "url": "https://github.com/nonomnonom/sealion/issues"
+  },
+  "license": "Apache-2.0",
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nonomnonom/sealion.git"
+  },
+  "files": [
+    "src",
+    "examples",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    ".env.example"
+  ],
+  "type": "module",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "types": "src/index.ts",
+  "exports": {
+    ".": {
+      "bun": "./src/index.ts",
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "typecheck": "tsc --noEmit",
+    "check": "oxfmt --check && oxlint && tsc --noEmit",
+    "test": "bun test",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "bun run check && bun test && changeset publish",
+    "prepublishOnly": "bun run check && bun test"
+  },
+  "dependencies": {
+    "@mastra/core": "^1.31.0"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.6.0",
+    "@changesets/cli": "^2.31.0",
+    "@types/bun": "latest",
+    "oxfmt": "^0.47.0",
+    "oxlint": "^1.62.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "engines": {
+    "bun": ">=1.1"
+  }
+}

@@ -1,0 +1,32 @@
+name: Feature request
+description: Propose a new capability or improvement.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What problem does this solve? Who hits it?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed API / behavior
+      description: Sketch the API. Code samples welcome.
+      render: ts
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Other approaches you thought about and why they're worse.
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope check
+      description: Is this in scope for Sealion? See CONTRIBUTING.md → "What's in scope".

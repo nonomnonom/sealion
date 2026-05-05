@@ -1,0 +1,56 @@
+name: Bug report
+description: Something doesn't work as documented.
+labels: [bug]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: Clear, minimal description of the bug.
+      placeholder: When I run `bun run examples/...`, the matching engine returned a partial fill but the orderbook still shows the full size.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Smallest possible script that triggers it.
+      render: ts
+      placeholder: |
+        import { make, TraderGraph, ... } from "sealion";
+        // ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected vs actual
+      placeholder: |
+        Expected: <what should have happened>
+        Actual:   <what happened instead>
+    validations:
+      required: true
+
+  - type: input
+    id: bun-version
+    attributes:
+      label: Bun version
+      placeholder: 1.1.43
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: OS
+      placeholder: macOS 14.5 / Ubuntu 22.04 / Windows 11
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Extra context
+      description: Logs, screenshots, related issues.
